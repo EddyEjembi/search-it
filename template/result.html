@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if result %}
+        <h1>
+            The Words Formed Are:
+        </h1>
+        {% for r in result %}
+            <h2>
+                <ul>
+                    <li>
+                        {{ r }}<br/>
+                    </li>
+                </ul>
+            </h2>
+        {% endfor %}
+    {% elif resul %}
+        <h3>
+            {{ resul | linebreaks }}
+        </h3>    
+    {% endif %}
+
+    <a href="/", class="button">
+        <button type="button"> Search Again </button>
+    </a>
+    <!-- 
+    {% if result %}
+        <h2>
+            {{ result }}
+        </h2>
+    {% endif %} -->
+
+
+{% endblock %}

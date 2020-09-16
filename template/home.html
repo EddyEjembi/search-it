@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+    <form action="search" method="POST">
+        {% csrf_token %}
+        <p>Enter The Characters: </p>
+        <input type="text" name="letter" required="required"><br>
+        <p>Enter the Exact lenght of Words you want to be displayed: </p>
+        <input type="text" name="num"><br>
+        <input type="submit" name="Search" value="Search">
+    </form>
+</h1>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search-It</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-image: url("{% static 'img/minion.jpg' %}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: black;
+    }
+</style>
+<body>
+
+    {% include "header.html" %}
+
+    {% block content %}
+    
+    {% csrf_token %}
+
+    {% endblock %}
+
+    {% include "footer.html" %}
+</body>
+</html>
