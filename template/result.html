@@ -2,28 +2,21 @@
 
 {% block content %}
 
-    {% if result %}
-        <h1>
-            The Words Formed Are:
-        </h1>
-        {% for r in result %}
-            <h2>
-                <ul>
-                    <li>
-                        {{ r }}<br/>
-                    </li>
-                </ul>
-            </h2>
-        {% endfor %}
-    {% elif resul %}
-        <h3>
-            {{ resul | linebreaks }}
-        </h3>    
-    {% endif %}
-
-    <a href="/", class="button">
-        <button type="button"> Search Again </button>
-    </a>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h4 class="lead mb-2">Word formed are: {{counter}}</h4>
+            <ul class="list-group mb-3">
+                {% for r in result %}
+                <li class="list-group-item">
+                    {{ r }}
+                </li>
+                {% empty %}
+                <p class="lead">No word found</p>
+                {% endfor %}
+            </ul>
+            <a href="/" class="btn btn-primary">Search Again    </a>
+        </div>
+    </div>
     <!-- 
     {% if result %}
         <h2>

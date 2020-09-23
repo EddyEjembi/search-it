@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>
-    <form action="search" method="POST">
-        {% csrf_token %}
-        <p>Enter The Characters: </p>
-        <input type="text" name="letter" required="required"><br>
-        <p>Enter the Exact lenght of Words you want to be displayed: </p>
-        <input type="text" name="num"><br>
-        <input type="submit" name="Search" value="Search">
-    </form>
-</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="search" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter The Characters: </label>
+                <input type="text" name="letter" class="form-control" required="required"><br>
+            </div>
+            <div class="form-group">
+                <label>Enter the Exact lenght of Words you want to be displayed: </label>
+                <input type="text" name="num" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" name="Search" class="btn btn-primary" value="Search">
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

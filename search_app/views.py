@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 import os
+#import enchant
+from spellchecker import SpellChecker
 from django.conf import settings
 from django.http import HttpResponse
 import json, re, requests
@@ -10,11 +12,14 @@ def home(request):
     return render(request, "home.html", {"name": "Eddy"})
 
 def search(request):
+    spell = SpellChecker()
+    #r = enchant.Dict("en_US")
     data = json.load(open(os.path.join(settings.BASE_DIR, 'words_dictionary.json')))
     #data = getJson(res)
     d = []
     d = list(data.keys())
     res = []
+    dew = []
 
     def character_set(w, character):
 
@@ -57,12 +62,12 @@ def search(request):
     character_set(d, words) 
     #char = request.Get['num']
     #return render(request, "result.html", {'result': res})
+    for i in res:
+        if i == spell.correction(i):
+            dew.append(i)
+        else:
+            pass
+
+    return render(request, "result.html", {'result': dew, 'counter': len(dew)})
     
-    if len(res) == 0:
-        b = ("No word formed from the given characters: " + word + "\nTry:\n .Checking the characters again\n .Leaving the exact lenght field blank to see all the possible words that could be formed from: " + word)
-        print(b)
-                 
-        return render(request, "result.html", {'resul': b})
-    else:
-        return render(request, "result.html", {'result': res})
         
